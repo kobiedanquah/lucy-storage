@@ -3,17 +3,15 @@ package main
 import (
 	"net/http"
 
-	"github.com/go-chi/chi/middleware"
-	"github.com/go-chi/chi/v5"
+	"github.com/gin-gonic/gin"
 )
 
 func loadRoutes() http.Handler {
-	mux := chi.NewRouter()
-	mux.Use(middleware.Logger)
+	mux := gin.New()
+	mux.Use(gin.Logger())
 	
-	mux.Get("/ping", func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusOK)
-		_, _ = w.Write([]byte("service online"))
+	mux.GET("/ping", func(ctx *gin.Context) {
+		ctx.JSON(http.StatusOK, gin.H{"status": http.StatusOK, "message": "service online"})
 	})
 
 	return mux
