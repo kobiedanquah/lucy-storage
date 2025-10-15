@@ -118,7 +118,7 @@ func (u UserStore) GetByID(ctx context.Context, id uuid.UUID) (*models.User, err
 
 // Update implements models.UserStore.
 func (u UserStore) Update(ctx context.Context, user *models.User) error {
-		query := `
+	query := `
 		UPDATE users 
 		SET name = $1, email = $2, password_hash = $3, profile_photo = $4, last_modified = $5, verified = $6
 		WHERE id = $7;`

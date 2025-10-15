@@ -1,5 +1,24 @@
 version: "3"
 
+dotenv: [".env"]
 tasks:
-  run: go run ./cmd/api
+  run:
+    cmd: go run ./cmd/api
 
+  up:
+    cmd: goose -dir ./migrations postgres $DB_URL up
+
+  down:
+    cmd: goose -dir ./migrations postgres $DB_URL down
+
+  reset:
+    cmd: goose -dir ./migrations postgres $DB_URL reset
+
+  test-up:
+    cmd: goose -dir ./migrations postgres $TEST_DB_URL up
+
+  test-down:
+    cmd: goose -dir ./migrations postgres $TEST_DB_URL down
+
+  test-reset: 
+    cmd: goose -dir ./migrations postgres $TEST_DB_URL reset
