@@ -65,7 +65,7 @@ func (us *UserService) CreateUser(ctx context.Context, name, email, password str
 
 	_ = us.store.InsertToken(ctx, &token)
 
-	us.sendEmail([]mailer.Address{userAddr}, "verify_email.html", data)
+	us.sendEmail([]mailer.Address{userAddr}, "verify_email.gohtml", data)
 
 	return user, nil
 }
@@ -92,7 +92,7 @@ func (us *UserService) VerifyUser(ctx context.Context, code string, email string
 	_ = us.store.DeleteToken(ctx, hash, VERIFICATION)
 
 	address := mailer.Address{Name: user.Name, Email: user.Email}
-	us.sendEmail([]mailer.Address{address}, "welcome_email.html", mailer.Data{Address: address})
+	us.sendEmail([]mailer.Address{address}, "welcome_email.gohtml", mailer.Data{Address: address})
 
 	return user, nil
 }
@@ -128,7 +128,7 @@ func (us *UserService) ResendVerificationEmail(ctx context.Context, email string
 		return err
 	}
 
-	us.sendEmail([]mailer.Address{userAddr}, "verify_email.html", data)
+	us.sendEmail([]mailer.Address{userAddr}, "verify_email.gohtml", data)
 
 	return nil
 }

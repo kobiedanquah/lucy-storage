@@ -166,6 +166,7 @@ func (u *UserStore) GetUserForToken(ctx context.Context, tokenHash string, scope
 	users.name,
 	users.email,
 	users.password_hash,
+	users.profile_photo,
 	users.verified,
 	users.created_at,
 	users.last_modified

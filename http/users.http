@@ -5,7 +5,16 @@ POST {{baseurl}}/users/register
 Content-Type: application/json
 
 {
-    "name": "Jon Jon",
-    "email": "jonjon@mail.com",
+    "name": "Jon OJ",
+    "email": "jonjerry@mail.com",
     "password": "longerword"
+}
+
+### Verify user account's email address
+POST {{baseurl}}/users/verify
+Content-Type: application/json
+
+{
+    "email": "jonjerry@mail.com",
+    "code": "772191"
 }
