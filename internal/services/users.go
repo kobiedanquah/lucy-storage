@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/primekobie/lucy/models"
+	"github.com/primekobie/lucy/internal/models"
 	"golang.org/x/crypto/bcrypt"
 )
 

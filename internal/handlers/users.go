@@ -7,8 +7,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	"github.com/primekobie/lucy/models"
-	"github.com/primekobie/lucy/services"
+	"github.com/primekobie/lucy/internal/models"
+	"github.com/primekobie/lucy/internal/services"
 )
 
 var ErrServerError = errors.New("server failed to process your request")
@@ -88,7 +88,6 @@ func (h *ServiceHandler) UpdateUserData(c *gin.Context) {
 
 	c.JSON(http.StatusOK, user)
 }
-
 
 func (h *ServiceHandler) DeleteUser(c *gin.Context) {
 	userId := c.Param("id")

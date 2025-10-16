@@ -8,9 +8,9 @@ import (
 
 	_ "github.com/jackc/pgx/v5/stdlib"
 	"github.com/joho/godotenv"
-	"github.com/primekobie/lucy/handlers"
-	"github.com/primekobie/lucy/postgres"
-	"github.com/primekobie/lucy/services"
+	"github.com/primekobie/lucy/internal/handlers"
+	"github.com/primekobie/lucy/internal/postgres"
+	"github.com/primekobie/lucy/internal/services"
 )
 
 type ServerApplication struct {
@@ -20,7 +20,6 @@ type ServerApplication struct {
 func main() {
 
 	_ = godotenv.Load()
-
 
 	db, err := sql.Open("pgx", os.Getenv("DB_URL"))
 	if err != nil {
