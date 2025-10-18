@@ -1,12 +1,15 @@
 @baseurl = http://localhost:8080/api/v1
+@userId = c3bb2684-7cbf-493f-a2fa-d40149c79cab
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdlbnNvYWtpbmdAbWFpbC5jb20iLCJleHAiOjE3NjA3ODEyMzYsImlhdCI6MTc2MDc3NDAzNiwic3ViIjoiYzNiYjI2ODQtN2NiZi00OTNmLWEyZmEtZDQwMTQ5Yzc5Y2FiIiwidG9rZW5fdHlwZSI6IkFDQ0VTUyJ9.sFvjCSY3ZNgM0mTxBVenwdznEWSkds3J2M0hVXtaryI
+@refreshToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdlbnNvYWtpbmdAbWFpbC5jb20iLCJleHAiOjE3NjIwNjk5OTQsImlhdCI6MTc2MDc3Mzk5NCwic3ViIjoiYzNiYjI2ODQtN2NiZi00OTNmLWEyZmEtZDQwMTQ5Yzc5Y2FiIiwidG9rZW5fdHlwZSI6IlJFRlJFU0gifQ.cPYI__SxDgFqkrqqJBuDUrQdHHBDc3jPCpNH0V4svMo"
 
 ### Create new user account
 POST {{baseurl}}/users/register
 Content-Type: application/json
 
 {
-    "name": "Jon OJ",
-    "email": "jonjerry@mail.com",
+    "name": "Bobby Three",
+    "email": "gensoaking@mail.com",
     "password": "longerword"
 }
 
@@ -15,6 +18,35 @@ POST {{baseurl}}/users/verify
 Content-Type: application/json
 
 {
-    "email": "jonjerry@mail.com",
-    "code": "772191"
+    "email": "gensoaking@mail.com",
+    "code": "510098"
+}
+
+### login into user account
+POST {{baseurl}}/users/login
+Content-Type: application/json
+
+{
+    "email": "gensoaking@mail.com",
+    "password": "longerword"
+}
+
+### get new access token
+POST {{baseurl}}/users/access
+Content-Type: application/json
+
+{
+    "refreshToken": {{refreshToken}}
+}
+
+### Get user details
+GET {{baseurl}}/users/{{userId}}
+Authorization: Bearer {{accessToken}}
+
+### Update user profile
+PATCH {{baseurl}}/users/profile
+Authorization: Bearer {{accessToken}}
+
+{
+    "name": "Jon Gensoa"
 }
