@@ -17,6 +17,7 @@ func (app *ServerApplication) loadRoutes() http.Handler {
 		AllowMethods: []string{"POST", "GET", "DELETE", "PATCH", "OPTIONS"},
 		AllowOrigins: []string{"http://localhost:5173"},
 		AllowHeaders: []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
+		AllowCredentials: true,
 	}))
 
 	open := mux.Group("/api/v1")
