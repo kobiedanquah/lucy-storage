@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/primekobie/lucy/internal/handlers"
 )
@@ -11,6 +12,12 @@ func (app *ServerApplication) loadRoutes() http.Handler {
 	mux := gin.New()
 	mux.Use(gin.Logger())
 	mux.Use(gin.Recovery())
+
+	mux.Use(cors.New(cors.Config{
+		AllowMethods: []string{"POST", "GET", "DELETE", "PATCH", "OPTIONS"},
+		AllowOrigins: []string{"http://localhost:5173"},
+		AllowHeaders: []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
+	}))
 
 	open := mux.Group("/api/v1")
 	open.GET("/ping", func(ctx *gin.Context) {
