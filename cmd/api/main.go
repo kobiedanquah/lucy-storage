@@ -49,7 +49,7 @@ func main() {
 
 	config := loadConfig()
 
-	db, err := sql.Open("pgx",config.PostgresURL)
+	db, err := sql.Open("pgx", config.PostgresURL)
 	if err != nil {
 		panic(err)
 	}

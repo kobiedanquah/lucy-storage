@@ -14,9 +14,9 @@ func (app *ServerApplication) loadRoutes() http.Handler {
 	mux.Use(gin.Recovery())
 
 	mux.Use(cors.New(cors.Config{
-		AllowMethods: []string{"POST", "GET", "DELETE", "PATCH", "OPTIONS"},
-		AllowOrigins: []string{"http://localhost:5173"},
-		AllowHeaders: []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
+		AllowMethods:     []string{"POST", "GET", "DELETE", "PATCH", "OPTIONS"},
+		AllowOrigins:     []string{"http://localhost:5173"},
+		AllowHeaders:     []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
 		AllowCredentials: true,
 	}))
 
@@ -28,12 +28,12 @@ func (app *ServerApplication) loadRoutes() http.Handler {
 		})
 	})
 
-	// users
-	open.POST("/users/register", app.handler.CreateUser)
-	open.POST("/users/login", app.handler.LoginUser)
-	open.POST("/users/access", app.handler.GetUserAccessToken)
-	open.POST("/users/verify", app.handler.VerifyUser)
-	open.POST("/users/verify/request", app.handler.RequestVerification)
+	// authentication
+	open.POST("/auth/register", app.handler.CreateUser)
+	open.POST("/auth/login", app.handler.LoginUser)
+	open.POST("/auth/access", app.handler.GetUserAccessToken)
+	open.POST("/auth/verify", app.handler.VerifyUser)
+	open.POST("/auth/verify/request", app.handler.RequestVerification)
 
 	protected := open.Group("/")
 	protected.Use(handlers.Authentication())

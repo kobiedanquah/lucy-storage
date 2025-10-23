@@ -9,7 +9,6 @@ const success = ref('')
 
 const userEmail = 'jane.doe@example.com' //TODO: use email from signup response
 
-
 const handleVerify = () => {
     error.value = ''
     success.value = ''
