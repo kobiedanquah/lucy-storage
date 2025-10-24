@@ -6,13 +6,13 @@ import Signup from "./views/Signup.vue";
 import VerifyEmail from "./views/VerifyEmail.vue";
 
 const routes = [
-    { path: "/", component: Home },
-    { path: "/signup", component: Signup },
-    { path: "/login", component: Login },
-    { path: "/signup/verify-email", component: VerifyEmail }
-]
+  { path: "/", component: Home },
+  { path: "/signup", component: Signup },
+  { path: "/login", component: Login },
+  { path: "/signup/verify-email", component: VerifyEmail },
+];
 
 export const router = createRouter({
-    history: createWebHistory(),
-    routes
-})
+  history: createWebHistory(),
+  routes,
+});
