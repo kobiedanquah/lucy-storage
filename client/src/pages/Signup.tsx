@@ -1,6 +1,7 @@
 import { createSignal } from "solid-js";
 import { createUser } from "../lib/api";
 import { useNavigate } from "@solidjs/router";
+import { setAppState } from "../stores";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -26,7 +27,8 @@ export default function Signup() {
     try {
       const data = await createUser(userInfo);
       console.log(data);
-      navigate("/signup/verify-email");
+      setAppState("user",  data)
+      navigate("/verification");
     } catch (e: any) {
       setLoading(false);
       setError(e.message);

@@ -26,10 +26,73 @@ export async function createUser(payload: {
         response.json().then((message) => {
           message = message;
         });
-        throw new Error(message)
+        throw new Error(message);
       }
     }
 
+    const data = await response.json();
+
+    return data;
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
+}
+
+export async function verifyUserEmail(payload: {
+  code: string;
+  email: string;
+}): Promise<User> {
+  try {
+    const response = await fetch(`${baseUrl}/auth/verify`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      if (response.status >= 500) {
+        throw new Error(`server could not process your request.`);
+      } else {
+        let message = "";
+        response.json().then((message) => {
+          message = message;
+        });
+        throw new Error(message);
+      }
+    }
+    const data = await response.json();
+
+    return data;
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
+}
+
+export async function requestVerificationCode(email: string) {
+  try {
+    const response = await fetch(`${baseUrl}/auth/verify/request`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: email }),
+    });
+
+    if (!response.ok) {
+      if (response.status >= 500) {
+        throw new Error(`server could not process your request.`);
+      } else {
+        let message = "";
+        response.json().then((message) => {
+          message = message;
+        });
+        throw new Error(message);
+      }
+    }
     const data = await response.json();
 
     return data;
