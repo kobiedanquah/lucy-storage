@@ -119,7 +119,7 @@ func (h *ServiceHandler) LoginUser(c *gin.Context) {
 func (h *ServiceHandler) GetUserAccessToken(c *gin.Context) {
 
 	var input struct {
-		RefresToken string `json:"refreshToken" binding:"required,jwt"`
+		RefreshToken string `json:"refreshToken" binding:"required,jwt"`
 	}
 
 	if err := c.ShouldBindJSON(&input); err != nil {
@@ -127,7 +127,7 @@ func (h *ServiceHandler) GetUserAccessToken(c *gin.Context) {
 		return
 	}
 
-	access, err := h.users.RefreshSession(c.Request.Context(), input.RefresToken)
+	access, err := h.users.RefreshSession(c.Request.Context(), input.RefreshToken)
 	if err != nil {
 		if errors.Is(err, services.ErrFailedOperation) {
 			c.JSON(http.StatusInternalServerError, gin.H{"message": ErrServerError.Error()})
