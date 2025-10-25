@@ -4,5 +4,5 @@ export interface User {
   email: string;
   profilePhoto: string;
   createdAt: Date;
-  lastModifie: Date;
+  lastModified: Date;
 }

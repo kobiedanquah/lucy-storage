@@ -37,7 +37,7 @@ func (h *ServiceHandler) CreateUser(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusCreated, gin.H{"user": user})
+	c.JSON(http.StatusCreated, user)
 }
 
 func (h *ServiceHandler) VerifyUser(c *gin.Context) {
@@ -61,7 +61,7 @@ func (h *ServiceHandler) VerifyUser(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"user": user})
+	c.JSON(http.StatusOK, user)
 }
 
 func (h *ServiceHandler) RequestVerification(c *gin.Context) {

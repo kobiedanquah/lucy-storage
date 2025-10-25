@@ -1,18 +1,8 @@
-import { createWebHistory, createRouter } from "vue-router";
-
-import Home from "./views/Home.vue";
-import Login from "./views/Login.vue";
-import Signup from "./views/Signup.vue";
-import VerifyEmail from "./views/VerifyEmail.vue";
+import { lazy } from "solid-js";
 
 const routes = [
-  { path: "/", component: Home },
-  { path: "/signup", component: Signup },
-  { path: "/login", component: Login },
-  { path: "/signup/verify-email", component: VerifyEmail },
+  { path: "/", component: lazy(() => import("./pages/Home")) },
+  { path: "/signup", component: lazy(() => import("./pages/Signup")) },
 ];
 
-export const router = createRouter({
-  history: createWebHistory(),
-  routes,
-});
+export default routes;
