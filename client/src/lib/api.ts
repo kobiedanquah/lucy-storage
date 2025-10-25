@@ -18,17 +18,23 @@ export async function createUser(payload: {
 
     if (!response.ok) {
       if (response.status == 409) {
-        throw new Error("User already exists");
+        throw new Error("a user with your email already exists");
+      } else if (response.status >= 500) {
+        throw new Error(`server could not process your request.`);
       } else {
-        throw new Error(`error with status ${response.status}`);
+        let message = "";
+        response.json().then((message) => {
+          message = message;
+        });
+        throw new Error(message)
       }
     }
 
     const data = await response.json();
 
     return data;
-  } catch (err: any) {
-    if (err instanceof Error) throw err;
-    throw new Error("An unknown error occurred while creating the user.");
+  } catch (e) {
+    console.log(e);
+    throw e;
   }
 }

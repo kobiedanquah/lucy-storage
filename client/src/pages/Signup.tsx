@@ -27,11 +27,10 @@ export default function Signup() {
       const data = await createUser(userInfo);
       console.log(data);
       navigate("/signup/verify-email");
-    } catch (e) {
-      console.error(e);
+    } catch (e: any) {
+      setLoading(false);
+      setError(e.message);
     }
-
-    setLoading(false);
   };
 
   return (
