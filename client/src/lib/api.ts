@@ -2,11 +2,7 @@ import type { User } from "../types/user";
 
 const baseUrl = "http://localhost:8080/api/v1";
 
-export async function createUser(payload: {
-  name: string;
-  email: string;
-  password: string;
-}): Promise<User> {
+export async function createUser(payload: { name: string; email: string; password: string }): Promise<User> {
   try {
     const response = await fetch(`${baseUrl}/auth/register`, {
       method: "POST",
@@ -19,14 +15,9 @@ export async function createUser(payload: {
     if (!response.ok) {
       if (response.status == 409) {
         throw new Error("a user with your email already exists");
-      } else if (response.status >= 500) {
-        throw new Error(`server could not process your request.`);
       } else {
-        let message = "";
-        response.json().then((message) => {
-          message = message;
-        });
-        throw new Error(message);
+        const resBody = await response.json();
+        throw new Error(resBody.message);
       }
     }
 
@@ -39,10 +30,7 @@ export async function createUser(payload: {
   }
 }
 
-export async function verifyUserEmail(payload: {
-  code: string;
-  email: string;
-}): Promise<User> {
+export async function verifyUserEmail(payload: { code: string; email: string }): Promise<User> {
   try {
     const response = await fetch(`${baseUrl}/auth/verify`, {
       method: "POST",
@@ -53,15 +41,8 @@ export async function verifyUserEmail(payload: {
     });
 
     if (!response.ok) {
-      if (response.status >= 500) {
-        throw new Error(`server could not process your request.`);
-      } else {
-        let message = "";
-        response.json().then((message) => {
-          message = message;
-        });
-        throw new Error(message);
-      }
+      const resBody = await response.json();
+      throw new Error(resBody.message);
     }
     const data = await response.json();
 
@@ -83,16 +64,34 @@ export async function requestVerificationCode(email: string) {
     });
 
     if (!response.ok) {
-      if (response.status >= 500) {
-        throw new Error(`server could not process your request.`);
-      } else {
-        let message = "";
-        response.json().then((message) => {
-          message = message;
-        });
-        throw new Error(message);
-      }
+      const resBody = await response.json();
+      throw new Error(resBody.message);
     }
+    const data = await response.json();
+
+    return data;
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
+}
+
+export async function getUserSession(payload: { email: string; password: string }) {
+  try {
+    const response = await fetch(`${baseUrl}/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      const resBody = await response.json();
+
+      throw new Error(resBody.message);
+    }
+
     const data = await response.json();
 
     return data;

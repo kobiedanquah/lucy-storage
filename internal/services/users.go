@@ -152,18 +152,24 @@ func (us *UserService) NewSession(ctx context.Context, email string, password st
 		return nil, ErrFailedOperation
 	}
 
-	ttl := 15 * (24 * time.Hour)
-	refresh, err := GenerateToken(user.ID, user.Email, ttl, TokenTypeRefresh)
+	refreshttl := 15 * (24 * time.Hour)
+	refresh, err := GenerateToken(user.ID, user.Email, refreshttl, TokenTypeRefresh)
 	if err != nil {
 		return nil, ErrFailedOperation
 	}
 
-	expiresAt := time.Now().Add(ttl)
+	accessttl := 1 * time.Hour
+	access, err := GenerateToken(user.ID, user.Email, accessttl, TokenTypeRefresh)
+	if err != nil {
+		return nil, ErrFailedOperation
+	}
+
+	refreshExpiry := time.Now().Add(refreshttl)
 	tokenHash := hashString(refresh)
 	token := models.UserToken{
 		Hash:      tokenHash,
 		UserId:    user.ID,
-		ExpiresAt: expiresAt,
+		ExpiresAt: refreshExpiry,
 		Scope:     AUTHENTICATION,
 	}
 
@@ -173,9 +179,11 @@ func (us *UserService) NewSession(ctx context.Context, email string, password st
 	}
 
 	session := &UserSession{
-		User:         *user,
-		RefreshToken: refresh,
-		ExpiresAt:    expiresAt,
+		User:             *user,
+		RefreshToken:     refresh,
+		RefreshExpiresAt: refreshExpiry,
+		AccessToken:      access,
+		AccessExpiresAt:  time.Now().Add(accessttl),
 	}
 
 	return session, nil

@@ -30,9 +30,11 @@ const (
 )
 
 type UserSession struct {
-	User         models.User `json:"user"`
-	RefreshToken string      `json:"refreshToken"`
-	ExpiresAt    time.Time   `json:"expiresAt"`
+	User             models.User `json:"user"`
+	RefreshToken     string      `json:"refreshToken"`
+	RefreshExpiresAt time.Time   `json:"refreshExpiresAt"`
+	AccessToken      string      `json:"accessToken"`
+	AccessExpiresAt  time.Time   `json:"accessExpiresAt"`
 }
 
 type UserAccess struct {

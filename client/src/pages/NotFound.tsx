@@ -1,3 +1,5 @@
+import { A } from "@solidjs/router";
+
 export default function NotFoundPage() {
   return (
     <div class="min-h-screen flex flex-col items-center justify-center bg-gray-50 text-slate-700 px-6">
@@ -8,12 +10,12 @@ export default function NotFoundPage() {
           The page you're looking for doesn't exist or has been moved.
         </p>
 
-        <a
+        <A
           href="/"
           class="inline-block bg-slate-700 text-white px-6 py-2 rounded-lg font-medium hover:bg-slate-800 transition"
         >
           Go Home
-        </a>
+        </A>
       </div>
 
       <footer class="mt-10 text-sm text-slate-500">
