@@ -1,7 +1,6 @@
 import { A, useNavigate } from "@solidjs/router";
 import { createSignal } from "solid-js";
 import { getUserSession } from "../lib/api";
-import {  setAppState } from "../stores";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -23,10 +22,10 @@ export default function Login() {
 
     try {
       const data = await getUserSession({ email: email(), password: password() });
-      setAppState("session", data) 
+      localStorage.setItem("session", JSON.stringify(data));
       navigate("/", { replace: true });
-    } catch (e:any) {
-      console.log(e.message)
+    } catch (e: any) {
+      console.log(e.message);
       setLoading(false);
       setError(e.message);
     }
