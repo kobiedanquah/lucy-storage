@@ -1,4 +1,4 @@
-import type { User } from "../types/user";
+import type { User } from "./types";
 
 const baseUrl = "http://localhost:8080/api/v1";
 

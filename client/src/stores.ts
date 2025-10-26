@@ -1,6 +1,6 @@
 import { createStore } from "solid-js/store";
-import type { User } from "./types/user";
-import type { UserSession } from "./types/session";
+import type { User, UserSession } from "./lib/types";
+
 
 type AppState = {
   user: User;
