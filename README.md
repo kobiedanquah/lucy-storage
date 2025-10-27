@@ -8,15 +8,7 @@
 
 ## Features
 
-| Status | Feature | Description |
-|:------:|----------|-------------|
-| - [ ] | User Authentication | Sign up, login, and secure session management |
-| - [ ] | File Upload & Download | Basic file storage via HTTP endpoints |
-| - [ ] | Folder Management | Organize files into folders and subfolders |
-| - [ ] | File Sharing | Generate shareable links with permission control |
-| - [ ] | Search & Metadata | Search by filename, type, and tags |
-| - [ ] | Web Interface | Minimal frontend built with TypeScript |
-| - [ ] | API (OpenAPI) Docs | RESTful endpoints with JSON responses |
+See the [TODO.md](TODO.md) file for details.
 
 ---
 
