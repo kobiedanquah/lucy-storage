@@ -1,11 +1,14 @@
 package main
 
 import (
+	"context"
 	"database/sql"
-	"log"
 	"log/slog"
 	"net/http"
 	"os"
+	"os/signal"
+	"syscall"
+	"time"
 
 	_ "github.com/jackc/pgx/v5/stdlib"
 	"github.com/joho/godotenv"
@@ -73,9 +76,26 @@ func main() {
 		Handler: app.loadRoutes(),
 	}
 
-	slog.Info("Starting Server")
-	err = srv.ListenAndServe()
-	if err != nil {
-		log.Fatal(err)
+	stop := make(chan os.Signal, 1)
+	signal.Notify(stop, os.Interrupt, syscall.SIGTERM)
+
+	serverErr := make(chan error, 1)
+	go func() {
+		slog.Info("Starting Server")
+		serverErr <- srv.ListenAndServe()
+	}()
+
+	select {
+	case err := <-serverErr:
+		if err != nil {
+			panic(err)
+		}
+	case sig := <-stop:
+		slog.Info("Shutting down server", "signal", sig)
+		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+		if err := srv.Shutdown(ctx); err != nil {
+			slog.Error("Graceful shutdown failed", "error", err)
+		}
 	}
 }
