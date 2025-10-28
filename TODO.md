@@ -18,19 +18,17 @@
 - [x] Setup migration tool (Goose)
 - [x] Setup logging and request middleware
 - [x] Setup Docker and docker compose
-- [ ] Setup graceful shutdown
+- [x] Setup graceful shutdown
 - [x] Initialize Solid.js + TypeScript project
 - [x] Configure TailwindCSS & UI components
 - [x] Setup routing (`@solidjs/router`)
 - [x] Create API client (fetch wrapper)
-- [ ] Configure environment variables for API URLs
 
 ---
 
 ## Authentication & User Management
 
 - [ ] **Backend**
-
   - [x] User model & migrations
   - [x] Registration (email + password)
   - [x] Login (JWT-based)
@@ -40,7 +38,6 @@
   - [ ] Middleware for JWT authentication
 
 - [ ] **Frontend**
-
   - [x] Sign up page
   - [x] Login page
   - [x] Email verification page (PIN/Code input)
@@ -54,7 +51,6 @@
 ## File Management Core
 
 - [ ] **Backend**
-
   - [ ] File metadata model (`files` table)
   - [ ] Folder model & hierarchy support
   - [ ] File upload API (multipart/form-data)
@@ -65,7 +61,6 @@
   - [ ] Quota & storage limit per user
 
 - [ ] **Frontend**
-
   - [ ] Dashboard / Home page (list files & folders)
   - [ ] File upload UI (drag & drop + progress bar)
   - [ ] File preview (images, PDFs, text files)
@@ -80,7 +75,6 @@
 ## Sharing & Collaboration
 
 - [ ] **Backend**
-
   - [ ] Shared links model (tokenized access)
   - [ ] Public file access route (`/share/:token`)
   - [ ] Access permissions (read/write)
@@ -88,7 +82,6 @@
   - [ ] Collaboration endpoints (add/remove users)
 
 - [ ] **Frontend**
-
   - [ ] Share modal (generate link, copy to clipboard)
   - [ ] Permission selection (view/edit)
   - [ ] Invite user by email
@@ -100,13 +93,11 @@
 ## Search, Sorting & Filtering
 
 - [ ] **Backend**
-
   - [ ] Search endpoint (by file name, type, owner)
   - [ ] Sorting and pagination support
   - [ ] Indexing for performance
 
 - [ ] **Frontend**
-
   - [ ] Search bar with debounce
   - [ ] Sort dropdown (by name/date/size)
   - [ ] Filters (file type, shared, recent)
@@ -119,7 +110,6 @@
 - [ ] File previews (video/audio support)
 - [ ] File version history
 - [ ] Trash / Recycle bin system
-
   - [ ] Soft delete files
   - [ ] Restore from trash
   - [ ] Auto-clean after X days
