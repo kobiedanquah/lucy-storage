@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/primekobie/lucy/internal/handlers"
+	"github.com/kobiedanquah/lucy/internal/handlers"
 )
 
 func (app *ServerApplication) loadRoutes() http.Handler {

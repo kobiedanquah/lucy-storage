@@ -1,4 +1,4 @@
-module github.com/primekobie/lucy
+module github.com/kobiedanquah/lucy
 
 go 1.25.0
 

@@ -11,8 +11,8 @@ import (
 
 	"github.com/google/uuid"
 	_ "github.com/jackc/pgx/v5/stdlib"
-	"github.com/primekobie/lucy/internal/models"
-	"github.com/primekobie/lucy/internal/postgres"
+	"github.com/kobiedanquah/lucy/internal/models"
+	"github.com/kobiedanquah/lucy/internal/postgres"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

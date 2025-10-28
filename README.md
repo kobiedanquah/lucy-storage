@@ -27,9 +27,9 @@ See the [TODO.md](TODO.md) file for details.
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/primekobie/lucy.git
+git clone https://github.com/kobiedanquah/lucy.git
 cd lucy
-````
+```
 
 ### Environment Setup
 
@@ -54,7 +54,7 @@ Once everything starts up, the API should be available at:
 
 ## Project Structure
 
-``` sh
+```sh
 lucy/
 ├── client # the frontend application built with solid.js
 ├── cmd

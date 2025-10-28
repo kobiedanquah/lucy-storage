@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"github.com/go-playground/validator/v10"
-	"github.com/primekobie/lucy/internal/services"
+	"github.com/kobiedanquah/lucy/internal/services"
 )
 
 type ServiceHandler struct {

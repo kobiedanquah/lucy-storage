@@ -8,7 +8,7 @@ import (
 	"log/slog"
 	"math/big"
 
-	"github.com/primekobie/lucy/internal/mailer"
+	"github.com/kobiedanquah/lucy/internal/mailer"
 )
 
 // GenerateOTP generates a 6-digit OTP as a string
