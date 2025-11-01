@@ -28,5 +28,11 @@ type File struct {
 }
 
 type FileStore interface {
-	AddFile(ctx context.Context, file *File) error
+	CreateFolder(ctx context.Context, folder *Folder) error
+	UpdateFoler(ctx context.Context, folder *Folder) error
+	DeleteFolder(ctx context.Context, id uuid.UUID)
+	CreateFile(ctx context.Context, file *File) error
+	UpdateFile(ctx context.Context, file *File) error
+	GetFile(ctx context.Context, id uuid.UUID) (*File, error)
+	DeleteFile(ctx context.Context, id uuid.UUID) error
 }

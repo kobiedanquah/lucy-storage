@@ -51,7 +51,7 @@
 ## File Management Core
 
 - [ ] **Backend**
-  - [ ] File metadata model (`files` table)
+  - [x] File metadata model (`files` table)
   - [ ] Folder model & hierarchy support
   - [ ] File upload API (multipart/form-data)
   - [ ] File download API (with access checks)
