@@ -12,10 +12,10 @@ import (
 
 	_ "github.com/jackc/pgx/v5/stdlib"
 	"github.com/joho/godotenv"
-	"github.com/kobiedanquah/lucy/internal/handlers"
-	"github.com/kobiedanquah/lucy/internal/mailer"
-	"github.com/kobiedanquah/lucy/internal/postgres"
-	"github.com/kobiedanquah/lucy/internal/services"
+	"github.com/primekobie/lucy/internal/handlers"
+	"github.com/primekobie/lucy/internal/mailer"
+	"github.com/primekobie/lucy/internal/postgres"
+	"github.com/primekobie/lucy/internal/services"
 )
 
 type ServerApplication struct {

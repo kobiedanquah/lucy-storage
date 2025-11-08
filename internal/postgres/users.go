@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/google/uuid"
-	"github.com/kobiedanquah/lucy/internal/models"
+	"github.com/primekobie/lucy/internal/models"
 )
 
 type UserStore struct {

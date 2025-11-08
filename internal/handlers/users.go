@@ -9,8 +9,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	"github.com/kobiedanquah/lucy/internal/models"
-	"github.com/kobiedanquah/lucy/internal/services"
+	"github.com/primekobie/lucy/internal/models"
+	"github.com/primekobie/lucy/internal/services"
 )
 
 var ErrServerError = errors.New("server failed to process your request")

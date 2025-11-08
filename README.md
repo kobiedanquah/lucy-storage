@@ -27,7 +27,7 @@ See the [TODO.md](TODO.md) file for details.
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/kobiedanquah/lucy.git
+git clone https://github.com/primekobie/lucy.git
 cd lucy
 ```
 
