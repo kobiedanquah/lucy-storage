@@ -10,7 +10,7 @@ import (
 type Folder struct {
 	ID           uuid.UUID `json:"id"`
 	ParentID     uuid.UUID `json:"parentID"`
-	OwnerID      uuid.UUID `json:"ownerID"`
+	UserID       uuid.UUID `json:"userID"`
 	Name         string    `json:"name"`
 	CreatedAt    time.Time `json:"createdAt"`
 	LastModified time.Time `json:"lastModified"`
@@ -20,14 +20,15 @@ type File struct {
 	ID           uuid.UUID `json:"id"`
 	Name         string    `json:"name"`
 	MimeType     string    `json:"mimeType"`
+	Size         int64     `json:"size"`
 	FolderID     uuid.UUID `json:"FolderID"`
-	OwnerID      uuid.UUID `json:"ownerID"`
+	UserID       uuid.UUID `json:"userID"`
 	CreatedAt    time.Time `json:"createdAt"`
 	LastModified time.Time `json:"lastModified"`
 	LastAccessed time.Time `json:"lastAccessed"`
 }
 
-type FileStore interface {
+type FileStorageStore interface {
 	CreateFolder(ctx context.Context, folder *Folder) error
 	UpdateFoler(ctx context.Context, folder *Folder) error
 	DeleteFolder(ctx context.Context, id uuid.UUID)
